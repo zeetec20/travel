@@ -25,7 +25,7 @@ SECRET_KEY = '*5@8z!gq2%fh6q2ih*+sv=e^(f%ibxdhmq3o(6s*p&qydiitod'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zeetrav.herokuapp.com']
 
 
 # Application definition
@@ -85,6 +85,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'travel2.urls'
@@ -164,3 +165,9 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/'
 MEIDA_ROOT = 'media'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
