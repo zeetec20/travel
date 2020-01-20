@@ -1,0 +1,45 @@
+{% load zeetrav %}
+{% for blog in listBlog %}
+    
+    {% if place == 'Home' and forloop.counter == 2 %}
+        
+        {% if forloop.counter <= 2 %}
+            <div class="col-md-6 col-lg-6 mb-4 mb-lg-4 blog">
+                <div class="h-entry">
+                    <img src="/{{blog.cover}}" alt="Image" class="img-fluid">
+                    <h2 class="font-size-regular"><a href="{% url 'blog:blog-username-detail' username=blog.user.username slugify=blog.slug %}">{{blog.title}}</a></h2>
+                    <div class="meta mb-4">by <a href="{% url 'blog:blog-username' username=blog.user.username %}">{{blog.user.username}} - {{blog.user.fullname}}</a> <span class="mx-2">&bullet;</span> {{blog.timeCreate}}{% if blog.timeCreate > timezone_days3 %}<span class="mx-2">&bullet;</span> <a style="color: #ef6c57;">News</a>{% endif %}</div>
+                    
+                    <textarea name="" id="" class="form-control content_blog" rows="3" style="border: none; resize: none; background-color: white;" readonly>{{blog.content}}</textarea>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        
+        {% if forloop.counter <= 6 %}
+            <div class="col-md-6 col-lg-6 mb-4 mb-lg-4 blog">
+                <div class="h-entry">
+                    <img src="/{{blog.cover}}" alt="Image" class="img-fluid">
+                    <h2 class="font-size-regular"><a href="{% url 'blog:blog-username-detail' username=blog.user.username slugify=blog.slug %}">{{blog.title}}</a></h2>
+                    <div class="meta mb-4">by <a href="{% url 'blog:blog-username' username=blog.user.username %}">{{blog.user.username}} - {{blog.user.fullname}}</a> <span class="mx-2">&bullet;</span> {{blog.timeCreate}}{% if blog.timeCreate > timezone_days3 %}<span class="mx-2">&bullet;</span> <a style="color: #ef6c57;">News</a>{% endif %}</div>
+                    
+                    <textarea name="" id="" class="form-control content_blog" rows="3" style="border: none; resize: none; background-color: white;" readonly>{{blog.content}}</textarea>
+                </div>
+            </div>
+        {% endif %}
+            
+    {% endif %}
+        
+    <!-- Jan 18, 2019 at 2:00 pm -->
+{% endfor %}
+
+<script>
+let content = document.querySelectorAll('.content_blog')
+
+content.forEach(element => {
+    let value = `${element.value.slice(0, 185)} `
+    value = value.replace('  ', ' ')
+    value = `${value}...`
+    element.innerHTML = value
+});
+</script>

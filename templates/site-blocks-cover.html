@@ -1,0 +1,30 @@
+
+{% if place == 'Blog' and blog != None %}
+    <div class="site-blocks-cover inner-page-cover" style="background-image: url(/{{blog.cover}});" data-aos="fade" data-stellar-background-ratio="0.5">
+{% else %}
+    <div class="site-blocks-cover inner-page-cover" style="{% if destination != None %}background-image: url(/{{destination.cover}});{% else %}background-image: url(/static/global/images/hero_bg_2.jpg);{% endif %}" data-aos="fade" data-stellar-background-ratio="0.5">
+{% endif %}
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+
+            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
+                
+                {% if place == 'User' %}
+                    <h1 id="title_blocks_cover" class="text-white font-weight-light">{% if user.is_authenticated %}{{title_blocks_cover.1}}{% else %}{{title_blocks_cover.0}}{% endif %}</h1>
+                {% else %}
+                    <h1 id="title_blocks_cover" class="text-white font-weight-light" style="text-shadow: 1px 1px 5px #00000052 !important;">{{title_blocks_cover}}</h1>
+                {% endif %}
+                
+                
+                {% if place == 'User' %}
+                    <div><a href="{% url 'home:index' %}">Home</a> <span class="mx-2 text-white">&bullet;</span> <span id="title2_blocks_cover" class="text-white">{% if user.is_authenticated %}{{user.username}}{% else %}Register / Login{% endif %}</span></div>
+                {% elif place == 'Blog' and blog != None %}
+                    <div><a href="{% url 'home:index' %}">Home</a> <span class="mx-2 text-white">&bullet;</span> <span id="title2_blocks_cover" class="text-white">{{blog.user.username}} | {{blog.user.fullname}}</span></div>
+                {% else %}
+                    <div><a href="{% url 'home:index' %}">Home</a> <span class="mx-2 text-white">&bullet;</span> <span id="title2_blocks_cover" class="text-white">{{place}}</span></div>                
+                {% endif %}
+                    
+            </div>
+        </div>
+    </div>
+</div>

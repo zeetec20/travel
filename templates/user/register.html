@@ -1,0 +1,66 @@
+<form method="POST" class="p-5 bg-white" id="form_register">
+    {% csrf_token %}
+    <h1 class="title_form">Register</h1>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label class="text-black" for="fname">Full Name</label>
+            <input type="text" name="fullname" id="register_fullname" class="form-control" placeholder="Full Name">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label class="text-black" for="fname">Username</label>
+            <input type="text" name="username" id="register_username" class="form-control" placeholder="Username">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label class="text-black" for="number">Number Phone</label>
+            <input type="number" name="number_phone" id="number" class="form-control" placeholder="Number Phone">
+        </div>
+        <div class="col-md-6">
+            <label class="text-black" for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label class="text-black" for="password">Password</label>
+            <input type="password" name="password" minlength="8" id="register_password" class="form-control" placeholder="Password">
+        </div>
+        <div class="col-md-6">
+            <label class="text-black" for="password">Comfirm Password</label>
+            <input type="password" name="password2" minlength="8" id="register_comfirm_password" class="form-control" placeholder="Comfirm Password">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="treatment">Gender</label>
+            <select name="gender" id="treatment" class="form-control">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+                <option value="2">Other</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="address">Andress</label>
+            <textarea name="address" id="address" cols="30" rows="5" class="form-control"
+                placeholder="Write your andress here..."></textarea>
+        </div>
+    </div>
+
+    <div class="col-md-12 form-group">
+        <div class="row">
+            <input type="submit" value="Register" class="btn btn-primary py-2 px-4 text-white register_btn_register col-md-5 col-sm-6" style="margin: auto;">
+            <input type="button" value="Go to Login" class="btn btn-primary py-2 px-4 text-white register_btn_login col-md-5 col-sm-6" style="margin: auto;">
+        </div>
+    </div>
+</form>

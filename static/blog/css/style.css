@@ -1,0 +1,28 @@
+html, body{
+    height: 100%;
+}
+
+.title_blog{
+    margin-bottom: 30px;
+    color: tomato;
+}
+
+.time_blog{
+    margin-bottom: 30px;
+    width: 100%;
+    padding-bottom: 30px;
+    border-bottom: solid #33333346 1px;
+}
+
+.content{
+    margin: auto;
+    width: 75% !important;
+    border: none !important;
+    resize: none;
+    outline: none !important;
+}
+
+.buttonLike{
+    transition: all 0.2s;
+    cursor: pointer;
+}

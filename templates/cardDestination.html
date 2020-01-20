@@ -1,0 +1,27 @@
+
+{% for dst in listDestination %}
+    
+    {% if place == 'Home' and forloop.counter < 7 %}
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <a href="{% url 'destination:destination_detail' country=dst.country.name.lower name=dst.slug %}" class="unit-1 text-center">
+                <img src="/{{dst.profile}}" alt="Image" class="img-fluid">
+                <div class="unit-1-text">
+                    <strong class="text-primary mb-2 d-block">${{dst.price}}</strong>
+                    <h3 class="unit-1-heading">{{dst.name}}, {{dst.country.name | lower | capfirst}}</h3>
+                </div>
+            </a>
+        </div>
+    {% elif place != 'Home' %}
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <a href="{% url 'destination:destination_detail' country=dst.country.name.lower name=dst.slug %}" class="unit-1 text-center">
+                <img src="/{{dst.profile}}" alt="Image" class="img-fluid">
+                <div class="unit-1-text">
+                    <strong class="text-primary mb-2 d-block">${{dst.price}}</strong>
+                    <h3 class="unit-1-heading">{{dst.name}}, {{dst.country.name | lower | capfirst}}</h3>
+                </div>
+            </a>
+        </div>
+    {% endif %}
+        
+{% endfor %}
+    

@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+.title_form{
+    margin-bottom: 40px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: solid #333333 1px;
+}
+
+.register_btn_login, .register_btn_register, .login_btn_login, .login_btn_register{
+    margin-top: 10px;
+}
+
+.register_btn_login, .login_btn_register{
+    color: #ef6c57 !important;
+    background-color: #ffffff;
+    border-color: #ef6c57 !important;
+}
+
+.register_btn_login:hover, .login_btn_register:hover{
+    border-color: black !important;
+}
+
+#form_login, #form_testimoni{
+    display: none;
+}
+
+.blog{
+    width: 80%;
+    height: 95%;
+    background-color: white;
+    margin: auto;
+    position: fixed;
+    top: 2%;
+    left: 0;
+    right: 0;
+    z-index: -2000;
+    display: none;
+    transition: all 0.5s;
+    overflow: auto;
+}
+
+@media only screen and (min-height: 760px){
+    .blog{
+        height: 720px;
+    }
+}

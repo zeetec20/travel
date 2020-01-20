@@ -1,0 +1,19 @@
+
+{% for team in listTeam %}
+    <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+        <img src="/{{team.profile}}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+        <h2 class="text-black font-weight-light mb-4">{{team.name}}</h2>
+        <p class="mb-4">{{team.description}}</p>
+        <p>
+            
+            {% for sosmed in listSosmed %}
+                {% for smd in sosmed.0 %}
+                    {% if smd.team.name == team.name %}
+                        <a href="{{smd.link}}" class="pl-0 pr-3" target="_blank"><span class="icon-{{smd.name}}"></span></a>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </p>
+    </div>
+{% endfor %}
+    

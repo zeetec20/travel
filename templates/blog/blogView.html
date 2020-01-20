@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock head %}
+    
+
+{% block body %}
+<script>
+    let order_user = "{{order_user | lower}}"
+    let order_blog = "{{order_blog | lower}}"
+</script>
+
+<div class="site-wrap">
+    <input type="checkbox" name="" value="{{like | lower}}" id="like" checked="true" style="display: none;">
+    <form action="" id="form_blog_unlike" method="post" style="display: none;">
+        <input type="text" name="id_user" id="" value="{{user.id_user}}">
+        <input type="text" name="slugify" id="" value="{{blog.slug}}">
+    </form>
+
+    {% include 'navbar.html' %}
+    {% include 'site-blocks-cover.html' %}
+    
+    <div class="site-section">
+    <div class="container">
+        <div class="row">
+            <h1 class="title_blog">{{blog.title}}</h1>
+            <h5 class="time_blog">&mdash;&nbsp;{{blog.timeCreate}}</h5>
+        </div>
+        <div class="row col-md-12">
+            <textarea name="" class="content" id="" rows="" readonly>{{blog.content}} &#13;&#10;&#13;&#10;by {{blog.user.username}} - {{blog.user.fullname}}</textarea>
+            <script>
+                let content = document.querySelector('.content')
+            </script>
+        </div>
+        <div class="row" style="margin: auto; margin-top: 50px;">
+            <label for="submit_blog_liked" class="buttonLike" style="margin: auto; padding-bottom: 5px; font-size: 20px;">Like <i class="fa fa-heart" aria-hidden="true"></i></label>
+        </div>
+        <div class="row">
+            <h6 class="count_like" style="margin: auto; border-top: solid 1px black; width: 150px; text-align: center; padding-top: 10px;">{{bloglike}}</h6>
+        </div>
+        <div class="col-md-12 mt-5">
+            <div class="row">
+                <button class="btn btn-primary col-md-3 m-auto"><i class="fa fa-facebook" aria-hidden="true"></i> Share</button>
+                <button class="btn btn-primary col-md-3 m-auto"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet</button>
+                <button class="btn btn-primary col-md-3 m-auto"><i class="fa fa-link" aria-hidden="true"></i> Copy</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    {% include 'footer.html' %}
+</div>
+
+
+{% if like %}
+<style>
+.count_like, .buttonLike{
+    color: tomato;
+}
+</style>
+{%endif%}
+<form method="post" id="form_blog_like" style="display: none;">
+    {{form.user}}
+    {{form.blog}}
+    <input type="submit" value="" id="submit_blog_liked">
+</form>
+{% endblock body %}
+
+
+{% block script %}
+<script src="{% static 'blog/js/bundle.js' %}"></script>
+<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+<script>
+    let count_like = document.querySelector('.count_like')
+    autosize(content)
+    let like = document.getElementById('like')
+
+    if (like.value == 'true') {
+        console.log('like')
+    } else {
+        document.getElementById('id_blog').value = order_blog
+        if (order_user != 'false') {
+            document.getElementById('id_user').value = order_user
+            console.log('test1')
+        } else {
+            console.log('test2')
+            document.querySelector('#form_blog_like').remove()
+
+            document.querySelector('.buttonLike').addEventListener('click', ()=>{
+                userModal(
+                    'Please Login / Register First', 
+                    '', 
+                    true,
+                    true
+                )
+            })
+        }
+    }
+</script>
+{% endblock script %}
+    
+    

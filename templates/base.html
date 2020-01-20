@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
+    <link rel="stylesheet" href="{% static 'global/font/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'global/css/bootstrap-datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'global/font/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+
+    <link rel="stylesheet" href="{% static 'global/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'global/images/favicon.ico' %}" type="image/x-icon">
+    
+    <title>ZeeTrav &mdash; {{place}}</title>
+    
+    {% block head %}
+        
+    {% endblock head %}
+        
+</head>
+<body>
+    <div class="blank" style="background-color: white; z-index: -2000; position: fixed; width: 100%; height: 100%;"></div>
+
+    {% include 'modal.html' %}
+
+    <script>
+        function blank(show) {
+            if (show) {
+                document.querySelector('.blank').style.zIndex = '2000'
+                document.querySelector('.blank').style.backgroundColor = '#0b0b0b86'
+                document.querySelector('.blank').style.transition = 'all 1s'
+                document.querySelector('.blank').style.opacity = 1
+                document.querySelector('.blank').style.display = 'block'
+            } else {
+                document.querySelector('.blank').style.zIndex = '-2000'
+                document.querySelector('.blank').style.backgroundColor = 'white'
+                document.querySelector('.blank').style.transition = 'all 0s'
+                document.querySelector('.blank').style.opacity = '0'
+                document.querySelector('.blank').style.display = 'none'
+            }
+        }
+
+        function userModal(title, body, show, modal_footer){
+            document.querySelector('.modal-title').innerHTML = title
+            document.querySelector('.modal-body').innerHTML = body
+
+            if (modal_footer) {
+                document.querySelector('.modal-footer-normal').style.display = 'none'
+                document.querySelector('.modal-footer-auth').style.display = 'block'
+            }
+
+            if (show) {
+                document.getElementById('exampleModal').style.display = 'block'
+                document.getElementById('exampleModal').style.transition = 'all 0.5s'
+                document.getElementById('exampleModal').style.opacity = '1'
+                document.getElementById('exampleModal').style.marginTop = '100px'
+                blank(true)
+            } else {
+                document.getElementById('exampleModal').style.display = 'none'
+                document.getElementById('exampleModal').style.transition = 'all 0s'
+                document.getElementById('exampleModal').style.opacity = '0'
+                document.getElementById('exampleModal').style.marginTop = '0px'
+                document.querySelector('.modal-footer-normal').style.display = 'block'
+                document.querySelector('.modal-footer-auth').style.display = 'none'
+                blank(false)
+            }
+        }
+    </script>
+    
+    {% block body %}
+    
+    {% endblock body %}
+    
+</body>
+    <script src="{% static 'global/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'global/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'global/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'global/js/popper.min.js' %}"></script>
+    <script src="{% static 'global/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'global/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'global/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'global/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'global/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'global/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'global/js/aos.js' %}"></script>
+
+    <script src="{% static 'global/js/main.js' %}"></script>
+    <script src="{% static 'global/js/bundle.js' %}"></script>
+    <script>
+        document.querySelector('.modal .modal-close').addEventListener('click', () => {
+            userModal(
+                '',
+                '',
+                false
+            )
+        })
+    </script>
+    {% block script %}
+    {% endblock script %}
+
+</html>

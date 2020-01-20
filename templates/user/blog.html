@@ -1,0 +1,45 @@
+<form method="POST" class="p-5 bg-white" id="form_blog">
+    <h1 class="title_form">Write Blog</h1>
+    {% csrf_token %}
+    
+    <div class="row form-group" style="display: none;">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formBlog.user.label}}
+            {{formBlog.user}}
+        </div>
+    </div>
+
+    <script>
+        if (order_user != 'False') {
+            document.querySelector('#form_blog #id_user_blog').value = order_user
+        }
+    </script>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formBlog.cover.label}}
+            {{formBlog.cover}}
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formBlog.title.label}}
+            {{formBlog.title}}
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formBlog.content.label}}
+            {{formBlog.content}}
+        </div>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="row">
+            <input type="submit" value="Publish" class="btn btn-primary py-2 px-4 text-white login_btn_login col-md-5 col-sm-6" style="margin: auto;">
+            <input type="button" value="Cancel" id="button_cancel_blog" class="btn btn-primary py-2 px-4 text-white login_btn_register col-md-5 col-sm-6" style="margin: auto;">
+        </div>
+    </div>
+</form>

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    {% include 'navbar.html' %}
+    {% include 'site-blocks-cover.html' %}
+
+    <div class="site-section" data-aos="fade-up">
+    <div class="container">
+        <div class="row align-items-center">
+        <div class="col-md-6 mb-5 mb-md-0">
+            <img src="/{{destination.cover}}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 pl-md-5" style="margin-left: -40px; border: solid 1px tomato; padding-top: 20px; padding-bottom: 20px;">
+            <h2 class="font-weight-light font-large text-black mb-4">{{destination.name}}</h2>
+            <p>{{destination.description}}</p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="site-section block-13 bg-light">
+        <div class="container" data-aos="fade">
+            <div class="row justify-content-center mb-5">
+            <div class="col-md-7">
+                <h2 class="font-weight-light text-black text-center">Select Your Lodging</h2>
+            </div>
+            </div>
+
+            <div class="nonloop-block-13 owl-carousel">
+                {% for lodging in listLodging %}
+                <div class="item" style="cursor: pointer;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 mb-5">
+                                <img src="/{{lodging.image}}" alt="Image" class="img-md-fluid">
+                            </div>
+                            <div class="overlap-left col-lg-6 bg-white p-md-5 align-self-center"">
+                                <h1 style="color: tomato;">{{destination.name}}</h1>
+                                <p class="text-black lead">{{lodging.name}}<br>${{lodging.price}}<br><span style="font-size: 13px;">{{lodging.address}}</span></p>
+                                <!-- &ldquo; -->
+                                <p class="">&mdash; <em>{{lodging.user.fullname}}</em><a target="_blank" href="{{lodging.website}}">More Info</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section border-top">
+    <div class="container">
+        <div class="row text-center">
+        <div class="col-md-12">
+            <h2 class="mb-5 text-black">Interested ?</h2>
+            <p class="mb-0"><a href="#" class="btn btn-primary py-3 px-5 text-white">Book {{destination.name}}</a></p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    {% include 'footer.html' %}
+    </div>
+{% endblock body %}
+    

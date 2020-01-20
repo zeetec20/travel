@@ -1,0 +1,9 @@
+<form method="post" id="form_subscribe">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <input type="email" class="form-control border-secondary text-white bg-transparent email" name="email" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary text-white" type="submit" id="button-addon2">Send</button>
+        </div>
+    </div>
+</form>

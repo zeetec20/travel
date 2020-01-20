@@ -1,0 +1,38 @@
+<form method="POST" class="p-5 bg-white" id="form_testimoni">
+    <h1 class="title_form">Testimoni</h1>
+    {% csrf_token %}
+    
+    <div class="row form-group" style="display: none;">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formTestimoni.user.label}}
+            {{formTestimoni.user}}
+        </div>
+    </div>
+
+    <script>
+        if (order_user != 'False') {
+            document.querySelector('#form_testimoni #id_user').value = order_user
+        }
+    </script>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formTestimoni.cover.label}}
+            {{formTestimoni.cover}}
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            {{formTestimoni.text.label}}
+            {{formTestimoni.text}}
+        </div>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="row">
+            <input type="submit" value="Send ur Testimoni" class="btn btn-primary py-2 px-4 text-white login_btn_login col-md-5 col-sm-6" style="margin: auto;">
+            <input type="button" value="Logout" id="buttonLogout" class="btn btn-primary py-2 px-4 text-white login_btn_register col-md-5 col-sm-6" style="margin: auto;">
+        </div>
+    </div>
+</form>

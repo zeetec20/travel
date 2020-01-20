@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="site-wrap">
+    {% include 'navbar.html' %}
+    {% include 'site-blocks-cover.html' %}
+
+    <div class="site-section" data-aos="fade-up">
+    <div class="container">
+        <div class="row align-items-center">
+        <div class="col-md-6 mb-5 mb-md-0">
+            <img src="{% static 'global/images/hero_bg_2.jpg' %}" alt="Image" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6 pl-md-5">
+            <h2 class="font-weight-light text-black mb-4">About Company</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae cumque eius modi expedita accusamus alias error totam ab magnam a mollitia magni, distinctio temporibus optio illo sapiente, odio unde natus.</p>
+
+            <ul class="list-unstyled">
+                <li class="d-flex align-items-center"><span class="icon-check2 text-primary h3 mr-2"></span><span>Vitae cumque eius modi expedita</span></li>
+                <li class="d-flex align-items-center"><span class="icon-check2 text-primary h3 mr-2"></span><span>Totam at maxime Accusantium</span></li>
+                <li class="d-flex align-items-center"><span class="icon-check2 text-primary h3 mr-2"></span><span>Distinctio temporibus</span></li>
+
+            </ul>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5" data-aos="fade-up">
+        <div class="col-md-7">
+            <h2 class="font-weight-light text-black text-center">Our Team</h2>
+        </div>
+        </div>
+        <div class="row">
+            {% include 'about/team.html' %}
+        </div>
+    </div>
+    </div>
+
+    <div class="site-section block-13 bg-light">
+
+
+    <div class="container" data-aos="fade">
+        <div class="row justify-content-center mb-5">
+        <div class="col-md-7">
+            <h2 class="font-weight-light text-black text-center">What People Says</h2>
+        </div>
+        </div>
+
+        <div class="nonloop-block-13 owl-carousel">
+
+            {% include 'cardTestimoni.html' %}
+        
+        </div>
+    </div>
+    </div>
+
+    <div class="site-section border-top">
+    <div class="container">
+        <div class="row text-center">
+        <div class="col-md-12">
+            <h2 class="mb-5 text-black">Want To Travel With Us?</h2>
+            <p class="mb-0"><a href="{% url 'destination:index' %}" class="btn btn-primary py-3 px-5 text-white">Book Now</a></p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    {% include 'footer.html' %}
+</div>
+
+{% endblock body %}
+    
