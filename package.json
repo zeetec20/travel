@@ -13,7 +13,7 @@
   "dependencies": {
     "autoprefixer": "^9.7.3",
     "autosize": "^4.0.2",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.4.1",
     "css-loader": "^3.4.2",
